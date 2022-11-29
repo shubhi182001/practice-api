@@ -30,6 +30,18 @@ app.get("/mens" , async(req, res) => {
     }
 })
 
+//getting individual's data:
+app.get("/mens/:id", async(req, res) => {
+    try{
+        const _id = req.params.id;
+        const getMen = await MensRanking.findById({_id: _id})
+        res.send(getMen);
+    }
+    catch(e){
+        res.status(400).send(e);
+    }
+})
+
 app.listen(port, () => {
     console.log(`connection is successful at port number ${port}`);
 })
