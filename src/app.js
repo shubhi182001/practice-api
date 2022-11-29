@@ -18,7 +18,18 @@ app.post("/mens" , async(req, res) => {
         res.status(400).send(e);
     }
 })
-  
+
+//get request:
+app.get("/mens" , async(req, res) => {
+    try{
+        const getMens = await MensRanking.find({});
+        res.status(200).send(getMens);
+    }
+    catch(e){
+        res.status(400).send(e);
+    }
+})
+
 app.listen(port, () => {
     console.log(`connection is successful at port number ${port}`);
 })
